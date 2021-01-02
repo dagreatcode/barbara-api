@@ -1,0 +1,20 @@
+{
+  "name": "barbara-api",
+  "version": "1.0.0",
+  "description": "A api for barbara's database using full CRUD",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dagreatcode/barbara-api.git"
+  },
+  "author": "Vincent Kendrick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dagreatcode/barbara-api/issues"
+  },
+  "homepage": "https://github.com/dagreatcode/barbara-api#readme"
+}
