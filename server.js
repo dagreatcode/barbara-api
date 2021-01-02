@@ -28,7 +28,7 @@ connection.connect(function(err) {
 
 // Routes
 app.get("/poohmadeit", function(req, res) {
-  connection.query("SELECT * FROM actors ORDER BY id", function(err, result) {
+  connection.query("SELECT * FROM poohmadeit ORDER BY id", function(err, result) {
     if (err) throw err;
     
     var html = "<h1>Pooh Made It</h1>";
@@ -38,8 +38,8 @@ app.get("/poohmadeit", function(req, res) {
     for (var i = 0; i < result.length; i++) {
       html += "<li><p> ID: " + result[i].id + "</p>";
       html += "<p> Name: " + result[i].name + "</p>";
-      html += "<p> Coolness Points: " + result[i].coolness_points + "</p>";
-      html += "<p>Attitude: " + result[i].attitude + "</p></li>";
+      html += "<p> bin_location: " + result[i].bin_location + "</p>";
+      html += "<p>description: " + result[i].description + "</p></li>";
     }
 
     html += "</ul>";
@@ -49,7 +49,7 @@ app.get("/poohmadeit", function(req, res) {
 });
 
 app.get("/retroluxe", function(req, res) {
-  connection.query("SELECT * FROM retroluxe ORDER BY coolness_points DESC", function(err, result) {
+  connection.query("SELECT * FROM retroluxe ORDER BY bin_location DESC", function(err, result) {
     if (err) throw err;
 
     var html = "<h1>Retro Luxe</h1>";
@@ -59,8 +59,8 @@ app.get("/retroluxe", function(req, res) {
     for (var i = 0; i < result.length; i++) {
       html += "<li><p> ID: " + result[i].id + "</p>";
       html += "<p> Name: " + result[i].name + "</p>";
-      html += "<p> Coolness Points: " + result[i].coolness_points + "</p>";
-      html += "<p>Attitude: " + result[i].attitude + "</p></li>";
+      html += "<p> bin_location: " + result[i].bin_location + "</p>";
+      html += "<p>description: " + result[i].description + "</p></li>";
     }
 
     html += "</ul>";
