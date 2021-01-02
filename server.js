@@ -53,6 +53,27 @@ app.get("/poohmadeit", function(req, res) {
   });
 });
 
+app.get("/poohmadeit/:bin", function(req, res) {
+    connection.query("SELECT * FROM poohmadeit WHERE bin_location = ?", [req.params.bin], function(err, result) {
+        if (err) throw err;
+    
+        var html = "<h1>Bin's " + req.params.bin + "</h1>";
+    
+        html += "<ul>";
+    
+        for (var i = 0; i < result.length; i++) {
+          html += "<li><p> ID: " + result[i].id + "</p>";
+          html += "<p> Name: " + result[i].name + "</p>";
+          html += "<p> bin_location: " + result[i].bin_location + "</p>";
+          html += "<p>description: " + result[i].description + "</p></li>";
+        }
+    
+        html += "</ul>";
+    
+        res.send(html);
+      });
+});
+
 app.get("/retroluxe", function(req, res) {
   connection.query("SELECT * FROM retroluxe ORDER BY bin_location DESC", function(err, result) {
     if (err) throw err;
@@ -74,6 +95,26 @@ app.get("/retroluxe", function(req, res) {
   });
 });
 
+app.get("/retroluxe/:bin", function(req, res) {
+    connection.query("SELECT * FROM retroluxe WHERE bin_location = ?", [req.params.bin], function(err, result) {
+        if (err) throw err;
+    
+        var html = "<h1>Bin's " + req.params.bin + "</h1>";
+    
+        html += "<ul>";
+    
+        for (var i = 0; i < result.length; i++) {
+          html += "<li><p> ID: " + result[i].id + "</p>";
+          html += "<p> Name: " + result[i].name + "</p>";
+          html += "<p> bin_location: " + result[i].bin_location + "</p>";
+          html += "<p>description: " + result[i].description + "</p></li>";
+        }
+    
+        html += "</ul>";
+    
+        res.send(html);
+      });
+});
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
   // Log (server-side) when our server has started
