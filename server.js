@@ -5,8 +5,8 @@ var mysql = require("mysql");
 var app = express();
 
 // Set the port of our application
-// process.env.PORT lets the port be set by Heroku
-var PORT = process.env.PORT || 8080;
+// process.env.PORT lets the port be set by Heroku + 3001;
+var PORT = process.env.PORT || 3001;
 
 // MySQL DB Connection Information (remember to change this with our specific credentials)
 var connection = mysql.createConnection({
@@ -25,6 +25,10 @@ connection.connect(function(err) {
   }
   console.log("connected as id " + connection.threadId);
 });
+
+app.get("/", function(req, res) {
+    res.json(path.join(__dirname, "public/index.html"));
+  });
 
 // Routes
 app.get("/poohmadeit", function(req, res) {
