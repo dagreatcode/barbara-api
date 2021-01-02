@@ -5,13 +5,27 @@ USE retroluxe_db
 CREATE TABLE poohmadeit (
   id int AUTO_INCREMENT,
   name varchar(30) NOT NULL,
-  coolness_points int NOT NULL,
-  attitude varchar(60) NOT NULL,
+  bin_location int NOT NULL,
+  description varchar(60) NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE retroluxe (
+  id int AUTO_INCREMENT,
+  name varchar(30) NOT NULL,
+  bin_location int NOT NULL,
+  description varchar(60) NOT NULL,
   PRIMARY KEY(id)
 );
 
 -- Insert a set of records.
-INSERT INTO poohmadeit (name, coolness_points, attitude) VALUES ("Jerry", 90, "relaxed");
-INSERT INTO poohmadeit (name, coolness_points, attitude) VALUES ("Elaine", 80, "righteous");
-INSERT INTO poohmadeit (name, coolness_points, attitude) VALUES ("Kramer", 20, "doofus");
-INSERT INTO poohmadeit (name, coolness_points, attitude) VALUES ("George", 70, "selfish");
+INSERT INTO poohmadeit (name, bin_location, description) VALUES ("First Jacket", 1, "relaxed");
+INSERT INTO poohmadeit (name, bin_location, description) VALUES ("First Pants", 1, "righteously nice");
+INSERT INTO poohmadeit (name, bin_location, description) VALUES ("Kramer", 20, "doofus");
+INSERT INTO poohmadeit (name, bin_location, description) VALUES ("George", 70, "selfish");
+
+-- Insert a set of records.
+INSERT INTO retroluxe (name, bin_location, description) VALUES ("Jerry", 90, "relaxed");
+INSERT INTO retroluxe (name, bin_location, description) VALUES ("Elaine", 80, "righteous");
+INSERT INTO retroluxe (name, bin_location, description) VALUES ("Kramer", 20, "doofus");
+INSERT INTO retroluxe (name, bin_location, description) VALUES ("George", 70, "selfish");
