@@ -1,5 +1,5 @@
 CREATE DATABASE retroluxe_db;
-USE retroluxe_db
+USE retroluxe_db;
 
 -- Create the table actors.
 CREATE TABLE poohmadeit (
