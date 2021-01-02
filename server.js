@@ -27,7 +27,7 @@ connection.connect(function(err) {
 });
 
 app.get("/", function(req, res) {
-    res.json(path.join(__dirname, "public/index.html"));
+    // res.json(path.join(__dirname, "public/index.html"));
     res.send(`<h1>Best Database</h1>`);
   });
 
