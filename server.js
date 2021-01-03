@@ -95,7 +95,7 @@ app.get("/api/config", (req, res) => {
 // Views Routes
 app.get("/", function(req, res) {
     // res.json(path.join(__dirname, "public/index.html"));
-    res.send(`<h1>Best Database</h1>`);
+    res.render("index");
 });
 
 app.get("/new", function(req, res) {
@@ -109,12 +109,12 @@ app.get("edit/:id", function(req, res) {
 });
 
 // Render Page you are pulling
-app.get("/index", function(req, res) {
-    connection.query("SELECT * FROM poohmadeit WHERE name", function(err, result) {
-        if (err) throw err;
-        res.render("index", );
-    });
-});
+// app.get("/index", function(req, res) {
+//     connection.query("SELECT * FROM poohmadeit WHERE name", function(err, result) {
+//         if (err) throw err;
+//         res.render("index", );
+//     });
+// });
 
 app.get("/poohmadeit", function(req, res) {
   connection.query("SELECT * FROM poohmadeit ORDER BY id", function(err, result) {
