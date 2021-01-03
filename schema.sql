@@ -1,3 +1,4 @@
+DROP DATABASE retroluxe_db;
 CREATE DATABASE retroluxe_db;
 USE retroluxe_db;
 
