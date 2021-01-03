@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 const connection = require("./config/connection");
+const orm = require("./config/orm");
 
 // Create instance of express app.
 const app = express();
@@ -210,7 +211,7 @@ app.get("/retroluxe/:bin", function(req, res) {
 });
 
 // Start our server so that it can begin listening to client requests.
-app.listen(PORT, function() {
+app.listen(PORT, () => {
   // Log (server-side) when our server has started
-  console.log("Server listening on: http://localhost:" + PORT);
+  console.log(`Server listening on: http://localhost:${PORT}`);
 });
