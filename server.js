@@ -36,50 +36,57 @@ connection.connect(function(err) {
 // Create
 app.post("/api/poohmadeit", (req,res) => {
 
-})
+});
 
 // Read
 app.get("/api/poohmadeit", (req,res) => {
     
-})
+});
 
 app.get("/api/poohmadeit/:id", (req,res) => {
     
-})
+});
 
 // Update
 app.put("/api/poohmadeit/:id", (req,res) => {
     
-})
+});
 
 // Delete
 app.delete("/api/poohmadeit/:id", (req,res) => {
     
-})
+});
 
 // Create
 app.post("/api/retroluxe", (req,res) => {
 
-})
+});
 
 // Read
 app.get("/api/retroluxe", (req,res) => {
     
-})
+});
 
 app.get("/api/retroluxe/:id", (req,res) => {
     
-})
+});
 
 // Update
 app.put("/api/retroluxe/:id", (req,res) => {
     
-})
+});
 
 // Delete
 app.delete("/api/retroluxe/:id", (req,res) => {
     
-})
+});
+
+// Config test
+app.get("/api/config", (res, req) => {
+    res.json({
+        success: true,
+    });
+});
 
 // Views Routes
 app.get("/", function(req, res) {
