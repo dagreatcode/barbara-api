@@ -1,6 +1,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require("mysql");
+const connection = require("./config/connection");
 
 // Create instance of express app.
 const app = express();
@@ -16,14 +17,16 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+
 // MySQL DB Connection Information (remember to change this with our specific credentials)
-const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "password",
-  database: "retroluxe_db"
-});
+// This was moved to connection.js 
+// const connection = mysql.createConnection({
+//   host: "localhost",
+//   port: 3306,
+//   user: "root",
+//   password: "password",
+//   database: "retroluxe_db"
+// });
 
 // Initiate MySQL Connection.
 connection.connect(function(err) {
@@ -93,7 +96,10 @@ app.get("/api/config", (req, res) => {
 
 
 // Views Routes
-app.get("/", function(req, res) {
+app.get("/", (req, res) => {
+    connection.query("SELECT * FROM retroluxe", (eer, data) => {
+        console.table(data);
+    })
     // res.json(path.join(__dirname, "public/index.html"));
     res.render("index", {name: "Barbara Kendrick"});
 });
