@@ -9,6 +9,9 @@ const app = express();
 // process.env.PORT lets the port be set by Heroku + 3001;
 const PORT = process.env.PORT || 8080;
 
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
