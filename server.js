@@ -95,7 +95,7 @@ app.get("/api/config", (req, res) => {
 // Views Routes
 app.get("/", function(req, res) {
     // res.json(path.join(__dirname, "public/index.html"));
-    res.render("index");
+    res.render("index", {name: "Barbara Kendrick"});
 });
 
 app.get("/new", function(req, res) {
