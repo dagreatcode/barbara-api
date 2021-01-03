@@ -7,7 +7,7 @@ const app = express();
 
 // Set the port of our application
 // process.env.PORT lets the port be set by Heroku + 3001;
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -34,26 +34,50 @@ connection.connect(function(err) {
 //Full CRUD API Routes
 
 // Create
-app.post("/api/user", (req,res) => {
+app.post("/api/poohmadeit", (req,res) => {
 
 })
 
 // Read
-app.get("/api/user", (req,res) => {
+app.get("/api/poohmadeit", (req,res) => {
     
 })
 
-app.get("/api/user/:id", (req,res) => {
+app.get("/api/poohmadeit/:id", (req,res) => {
     
 })
 
 // Update
-app.put("/api/user/:id", (req,res) => {
+app.put("/api/poohmadeit/:id", (req,res) => {
     
 })
 
 // Delete
-app.delete("/api/user/:id", (req,res) => {
+app.delete("/api/poohmadeit/:id", (req,res) => {
+    
+})
+
+// Create
+app.post("/api/retroluxe", (req,res) => {
+
+})
+
+// Read
+app.get("/api/retroluxe", (req,res) => {
+    
+})
+
+app.get("/api/retroluxe/:id", (req,res) => {
+    
+})
+
+// Update
+app.put("/api/retroluxe/:id", (req,res) => {
+    
+})
+
+// Delete
+app.delete("/api/retroluxe/:id", (req,res) => {
     
 })
 
@@ -61,13 +85,23 @@ app.delete("/api/user/:id", (req,res) => {
 app.get("/", function(req, res) {
     // res.json(path.join(__dirname, "public/index.html"));
     res.send(`<h1>Best Database</h1>`);
-  });
+});
 
-  app.get("/index", function(req, res) {
+app.get("/new", function(req, res) {
+    // res.json(path.join(__dirname, "public/index.html"));
+    res.send(`<h1>Best Database</h1>`);
+});
+
+app.get("edit/:id", function(req, res) {
+    // res.json(path.join(__dirname, "public/index.html"));
+    res.send(`<h1>Best Database</h1>`);
+});
+
+app.get("/index", function(req, res) {
     connection.query("SELECT * FROM poohmadeit WHERE name", function(err, result) {
         res.render("index", );
     });
-  });
+});
 
 app.get("/poohmadeit", function(req, res) {
   connection.query("SELECT * FROM poohmadeit ORDER BY id", function(err, result) {
