@@ -31,6 +31,13 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
+// Config test
+app.get("/api/config", (res, req) => {
+    res.json({
+        success: true,
+    });
+});
+
 //Full CRUD API Routes
 
 // Create
@@ -81,12 +88,6 @@ app.delete("/api/retroluxe/:id", (req,res) => {
     
 });
 
-// Config test
-app.get("/api/config", (res, req) => {
-    res.json({
-        success: true,
-    });
-});
 
 // Views Routes
 app.get("/", function(req, res) {
