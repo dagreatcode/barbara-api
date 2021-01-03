@@ -1,19 +1,20 @@
-var express = require("express");
-var mysql = require("mysql");
+const express = require("express");
+const exphbs = require("express-handlebars");
+const mysql = require("mysql");
 
 // Create instance of express app.
-var app = express();
+const app = express();
 
 // Set the port of our application
 // process.env.PORT lets the port be set by Heroku + 3001;
-var PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // MySQL DB Connection Information (remember to change this with our specific credentials)
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
@@ -30,21 +31,53 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
+//Full CRUD API Routes
+
+// Create
+app.post("/api/user", (req,res) => {
+
+})
+
+// Read
+app.get("/api/user", (req,res) => {
+    
+})
+
+app.get("/api/user/:id", (req,res) => {
+    
+})
+
+// Update
+app.put("/api/user/:id", (req,res) => {
+    
+})
+
+// Delete
+app.delete("/api/user/:id", (req,res) => {
+    
+})
+
+// Views Routes
 app.get("/", function(req, res) {
     // res.json(path.join(__dirname, "public/index.html"));
     res.send(`<h1>Best Database</h1>`);
   });
 
-// Routes
+  app.get("/index", function(req, res) {
+    connection.query("SELECT * FROM poohmadeit WHERE name", function(err, result) {
+        res.render("index", );
+    });
+  });
+
 app.get("/poohmadeit", function(req, res) {
   connection.query("SELECT * FROM poohmadeit ORDER BY id", function(err, result) {
     if (err) throw err;
     
-    var html = "<h1>Pooh Made It</h1>";
+    const html = "<h1>Pooh Made It</h1>";
 
     html += "<ul>";
 
-    for (var i = 0; i < result.length; i++) {
+    for (let i = 0; i < result.length; i++) {
       html += "<li><p> ID: " + result[i].id + "</p>";
       html += "<p> Name: " + result[i].name + "</p>";
       html += "<p> bin_location: " + result[i].bin_location + "</p>";
@@ -61,11 +94,11 @@ app.get("/poohmadeit/:bin", function(req, res) {
     connection.query("SELECT * FROM poohmadeit WHERE bin_location = ?", [req.params.bin], function(err, result) {
         if (err) throw err;
     
-        var html = "<h1>Bin's " + req.params.bin + "</h1>";
+        const html = "<h1>Bin's " + req.params.bin + "</h1>";
     
         html += "<ul>";
     
-        for (var i = 0; i < result.length; i++) {
+        for (let i = 0; i < result.length; i++) {
           html += "<li><p> ID: " + result[i].id + "</p>";
           html += "<p> Name: " + result[i].name + "</p>";
           html += "<p> bin_location: " + result[i].bin_location + "</p>";
@@ -82,11 +115,11 @@ app.get("/retroluxe", function(req, res) {
   connection.query("SELECT * FROM retroluxe ORDER BY bin_location DESC", function(err, result) {
     if (err) throw err;
 
-    var html = "<h1>Retro Luxe</h1>";
+    const html = "<h1>Retro Luxe</h1>";
 
     html += "<ul>";
 
-    for (var i = 0; i < result.length; i++) {
+    for (let i = 0; i < result.length; i++) {
       html += "<li><p> ID: " + result[i].id + "</p>";
       html += "<p> Name: " + result[i].name + "</p>";
       html += "<p> bin_location: " + result[i].bin_location + "</p>";
@@ -103,11 +136,11 @@ app.get("/retroluxe/:bin", function(req, res) {
     connection.query("SELECT * FROM retroluxe WHERE bin_location = ?", [req.params.bin], function(err, result) {
         if (err) throw err;
     
-        var html = "<h1>Bin's " + req.params.bin + "</h1>";
+        const html = "<h1>Bin's " + req.params.bin + "</h1>";
     
         html += "<ul>";
     
-        for (var i = 0; i < result.length; i++) {
+        for (let i = 0; i < result.length; i++) {
           html += "<li><p> ID: " + result[i].id + "</p>";
           html += "<p> Name: " + result[i].name + "</p>";
           html += "<p> bin_location: " + result[i].bin_location + "</p>";

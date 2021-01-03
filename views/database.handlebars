@@ -1,0 +1,17 @@
+<style media="screen">
+  li {
+    background-color: wheat;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 50%;
+    font-family: sans-serif;
+  }
+</style>
+
+<h1>Bin's for {{poohmadeit}}</h1>
+
+<ul>
+  {{#each poohmadeit}}
+  <li>{{this.name}}</li>
+  {{/each}}
+</ul>
