@@ -100,6 +100,9 @@ app.get("/", (req, res) => {
     connection.query("SELECT * FROM retroluxe", (eer, data) => {
         console.table(data);
     })
+    connection.query("SELECT * FROM poohmadeit", (eer, data) => {
+        console.table(data);
+    })
     // res.json(path.join(__dirname, "public/index.html"));
     res.render("index", {name: "Barbara Kendrick"});
 });
