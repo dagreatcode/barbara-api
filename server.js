@@ -35,7 +35,7 @@ connection.connect(function(err) {
 });
 
 // Config test
-app.get("/api/config", (res, req) => {
+app.get("/api/config", (req, res) => {
     res.json({
         success: true,
     });
@@ -100,16 +100,18 @@ app.get("/", function(req, res) {
 
 app.get("/new", function(req, res) {
     // res.json(path.join(__dirname, "public/index.html"));
-    res.send(`<h1>Best Database</h1>`);
+    res.send(`<h1>New Data Here</h1>`);
 });
 
 app.get("edit/:id", function(req, res) {
     // res.json(path.join(__dirname, "public/index.html"));
-    res.send(`<h1>Best Database</h1>`);
+    res.send(`<h1>Edit Data Here</h1>`);
 });
 
+// Render Page you are pulling
 app.get("/index", function(req, res) {
     connection.query("SELECT * FROM poohmadeit WHERE name", function(err, result) {
+        if (err) throw err;
         res.render("index", );
     });
 });
@@ -118,7 +120,7 @@ app.get("/poohmadeit", function(req, res) {
   connection.query("SELECT * FROM poohmadeit ORDER BY id", function(err, result) {
     if (err) throw err;
     
-    const html = "<h1>Pooh Made It</h1>";
+    let html = "<h1>Pooh Made It</h1>";
 
     html += "<ul>";
 
@@ -139,7 +141,7 @@ app.get("/poohmadeit/:bin", function(req, res) {
     connection.query("SELECT * FROM poohmadeit WHERE bin_location = ?", [req.params.bin], function(err, result) {
         if (err) throw err;
     
-        const html = "<h1>Bin's " + req.params.bin + "</h1>";
+        let html = "<h1>Bin's " + req.params.bin + "</h1>";
     
         html += "<ul>";
     
@@ -160,7 +162,7 @@ app.get("/retroluxe", function(req, res) {
   connection.query("SELECT * FROM retroluxe ORDER BY bin_location DESC", function(err, result) {
     if (err) throw err;
 
-    const html = "<h1>Retro Luxe</h1>";
+    let html = "<h1>Retro Luxe</h1>";
 
     html += "<ul>";
 
@@ -181,7 +183,7 @@ app.get("/retroluxe/:bin", function(req, res) {
     connection.query("SELECT * FROM retroluxe WHERE bin_location = ?", [req.params.bin], function(err, result) {
         if (err) throw err;
     
-        const html = "<h1>Bin's " + req.params.bin + "</h1>";
+        let html = "<h1>Bin's " + req.params.bin + "</h1>";
     
         html += "<ul>";
     
