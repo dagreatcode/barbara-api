@@ -18,9 +18,8 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-
 // MySQL DB Connection Information (remember to change this with our specific credentials)
-// This was moved to connection.js 
+// This was moved to connection.js
 // const connection = mysql.createConnection({
 //   host: "localhost",
 //   port: 3306,
@@ -30,7 +29,7 @@ app.set("view engine", "handlebars");
 // });
 
 // Initiate MySQL Connection.
-connection.connect(function(err) {
+connection.connect(function (err) {
   if (err) {
     console.error("error connecting: " + err.stack);
     return;
@@ -40,9 +39,9 @@ connection.connect(function(err) {
 
 // Config test
 app.get("/api/config", (req, res) => {
-    res.json({
-        success: true,
-    });
+  res.json({
+    success: true,
+  });
 });
 
 //Full CRUD API Routes
@@ -54,21 +53,21 @@ app.get("/api/config", (req, res) => {
 
 // // Read
 // app.get("/api/poohmadeit", (req,res) => {
-    
+
 // });
 
 // app.get("/api/poohmadeit/:id", (req,res) => {
-    
+
 // });
 
 // // Update
 // app.put("/api/poohmadeit/:id", (req,res) => {
-    
+
 // });
 
 // // Delete
 // app.delete("/api/poohmadeit/:id", (req,res) => {
-    
+
 // });
 
 // // Create
@@ -78,44 +77,59 @@ app.get("/api/config", (req, res) => {
 
 // // Read
 // app.get("/api/retroluxe", (req,res) => {
-    
+
 // });
 
 // app.get("/api/retroluxe/:id", (req,res) => {
-    
+
 // });
 
 // // Update
 // app.put("/api/retroluxe/:id", (req,res) => {
-    
+
 // });
 
 // // Delete
 // app.delete("/api/retroluxe/:id", (req,res) => {
-    
+
 // });
 
+app.post("/api/retroluxe", (req, res) => {
+  console.log(req.body);
+  connection.query(`INSERT INTO retroluxe (name, bin_location, description) VALUES ("New Item", 0, "relaxed")`, [req.body.name], (err, data) => {
+      if (err) {
+        throw err;
+      }
+      res.redirect("/");
+  //     res.json({
+  //       error: false,
+  //       data: null,
+  //       message: "Wrote data to retroluxe.",
+  //     })
+    })
+});
 
 // Views Routes
 app.get("/", (req, res) => {
-    connection.query("SELECT * FROM retroluxe", (eer, data) => {
-        console.table(data);
-    })
-    connection.query("SELECT * FROM poohmadeit", (eer, data) => {
-        console.table(data);
-    })
-    // res.json(path.join(__dirname, "public/index.html"));
-    res.render("index", {name: "Barbara Kendrick"});
+  connection.query("SELECT * FROM poohmadeit", (eer, data) => {
+    console.table(data);
+    res.render("index", { myName: "Barbara Kendrick", name: "Great Day" });
+    // res.render("index", { poohmadeit: data[0].name });
+  });
+  // connection.query("SELECT * FROM poohmadeit", (eer, data) => {
+  //   console.table(data);
+  // });
+  // res.json(path.join(__dirname, "public/index.html"));
 });
 
-app.get("/new", function(req, res) {
-    // res.json(path.join(__dirname, "public/index.html"));
-    res.send(`<h1>New Data Here</h1>`);
+app.get("/new", function (req, res) {
+  // res.json(path.join(__dirname, "public/index.html"));
+  res.send(`<h1>New Data Here</h1>`);
 });
 
-app.get("edit/:id", function(req, res) {
-    // res.json(path.join(__dirname, "public/index.html"));
-    res.send(`<h1>Edit Data Here</h1>`);
+app.get("edit/:id", function (req, res) {
+  // res.json(path.join(__dirname, "public/index.html"));
+  res.send(`<h1>Edit Data Here</h1>`);
 });
 
 // Render Page you are pulling
@@ -126,88 +140,102 @@ app.get("edit/:id", function(req, res) {
 //     });
 // });
 
-app.get("/poohmadeit", function(req, res) {
-  connection.query("SELECT * FROM poohmadeit ORDER BY id", function(err, result) {
-    if (err) throw err;
-    
-    let html = "<h1>Pooh Made It</h1>";
+app.get("/poohmadeit", function (req, res) {
+  connection.query(
+    "SELECT * FROM poohmadeit ORDER BY id",
+    function (err, result) {
+      if (err) throw err;
 
-    html += "<ul>";
+      let html = "<h1>Pooh Made It</h1>";
 
-    for (let i = 0; i < result.length; i++) {
-      html += "<li><p> ID: " + result[i].id + "</p>";
-      html += "<p> Name: " + result[i].name + "</p>";
-      html += "<p> bin_location: " + result[i].bin_location + "</p>";
-      html += "<p>description: " + result[i].description + "</p></li>";
+      html += "<ul>";
+
+      for (let i = 0; i < result.length; i++) {
+        html += "<li><p> ID: " + result[i].id + "</p>";
+        html += "<p> Name: " + result[i].name + "</p>";
+        html += "<p> bin_location: " + result[i].bin_location + "</p>";
+        html += "<p>description: " + result[i].description + "</p></li>";
+      }
+
+      html += "</ul>";
+
+      res.send(html);
     }
-
-    html += "</ul>";
-
-    res.send(html);
-  });
+  );
 });
 
-app.get("/poohmadeit/:bin", function(req, res) {
-    connection.query("SELECT * FROM poohmadeit WHERE bin_location = ?", [req.params.bin], function(err, result) {
-        if (err) throw err;
-    
-        let html = "<h1>Bin's " + req.params.bin + "</h1>";
-    
-        html += "<ul>";
-    
-        for (let i = 0; i < result.length; i++) {
-          html += "<li><p> ID: " + result[i].id + "</p>";
-          html += "<p> Name: " + result[i].name + "</p>";
-          html += "<p> bin_location: " + result[i].bin_location + "</p>";
-          html += "<p>description: " + result[i].description + "</p></li>";
-        }
-    
-        html += "</ul>";
-    
-        res.send(html);
-      });
-});
+app.get("/poohmadeit/:bin", function (req, res) {
+  connection.query(
+    "SELECT * FROM poohmadeit WHERE bin_location = ?",
+    [req.params.bin],
+    function (err, result) {
+      if (err) throw err;
 
-app.get("/retroluxe", function(req, res) {
-  connection.query("SELECT * FROM retroluxe ORDER BY bin_location DESC", function(err, result) {
-    if (err) throw err;
+      let html = "<h1>Bin's " + req.params.bin + "</h1>";
 
-    let html = "<h1>Retro Luxe</h1>";
+      html += "<ul>";
 
-    html += "<ul>";
+      for (let i = 0; i < result.length; i++) {
+        html += "<li><p> ID: " + result[i].id + "</p>";
+        html += "<p> Name: " + result[i].name + "</p>";
+        html += "<p> bin_location: " + result[i].bin_location + "</p>";
+        html += "<p>description: " + result[i].description + "</p></li>";
+      }
 
-    for (let i = 0; i < result.length; i++) {
-      html += "<li><p> ID: " + result[i].id + "</p>";
-      html += "<p> Name: " + result[i].name + "</p>";
-      html += "<p> bin_location: " + result[i].bin_location + "</p>";
-      html += "<p>description: " + result[i].description + "</p></li>";
+      html += "</ul>";
+
+      res.send(html);
     }
-
-    html += "</ul>";
-
-    res.send(html);
-  });
+  );
 });
 
-app.get("/retroluxe/:bin", function(req, res) {
-    connection.query("SELECT * FROM retroluxe WHERE bin_location = ?", [req.params.bin], function(err, result) {
-        if (err) throw err;
-    
-        let html = "<h1>Bin's " + req.params.bin + "</h1>";
-    
-        html += "<ul>";
-    
-        for (let i = 0; i < result.length; i++) {
-          html += "<li><p> ID: " + result[i].id + "</p>";
-          html += "<p> Name: " + result[i].name + "</p>";
-          html += "<p> bin_location: " + result[i].bin_location + "</p>";
-          html += "<p>description: " + result[i].description + "</p></li>";
-        }
-    
-        html += "</ul>";
-    
-        res.send(html);
-      });
+app.get("/retroluxe", function (req, res) {
+  connection.query(
+    "SELECT * FROM retroluxe ORDER BY bin_location DESC",
+    function (err, result) {
+      if (err) throw err;
+
+      let html = "<h1>Retro Luxe</h1>";
+
+      html += "<ul>";
+
+      for (let i = 0; i < result.length; i++) {
+        html += "<li><p> ID: " + result[i].id + "</p>";
+        html += "<p> Name: " + result[i].name + "</p>";
+        html += "<p> bin_location: " + result[i].bin_location + "</p>";
+        html += "<p>description: " + result[i].description + "</p></li>";
+      }
+
+      html += "</ul>";
+
+      res.send(html);
+    }
+  );
+});
+
+app.get("/retroluxe/:bin", function (req, res) {
+  connection.query(
+    "SELECT * FROM retroluxe WHERE bin_location = ?",
+    [req.params.bin],
+    function (err, result) {
+      if (err) throw err;
+
+      let html = "<h1>Bin's " + req.params.bin + "</h1>";
+
+      html += "<ul>";
+
+      for (let i = 0; i < result.length; i++) {
+        html += "<li><p> ID: " + result[i].id + "</p>";
+        html += "<p> Name: " + result[i].name + "</p>";
+        html += "<p> bin_location: " + result[i].bin_location + "</p>";
+        html += "<p>description: " + result[i].description + "</p></li>";
+      }
+
+      html += "</ul>";
+
+      res.send(html);
+    }
+  );
 });
 
 // Start our server so that it can begin listening to client requests.

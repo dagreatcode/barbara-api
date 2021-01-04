@@ -1,4 +1,27 @@
 <h1>Hello</h1>
+<h1>{{myName}}</h1>
 <h1>{{name}}</h1>
 <h1>{{bin_location}}</h1>
 <h1>{{description}}</h1>
+<h1>{{poohmadeit}}</h1>
+<h1>{{retroluxe}}</h1>
+
+<button type="submit">1</button>
+<button type="submit">2</button>
+
+<ul>
+  {{#each poohmadeit}}
+  	<li>
+  	   <p>ID: {{this.id}}</p>
+       <p>Name: {{this.name}}</p>
+       <p>BinLocation: {{this.bin_location}}</p>
+  	</li>
+  {{/each}}
+</ul>
+
+
+<form action="/api/retroluxe" method="POST">
+    <textarea type="text" name="retroluxe"></textarea>
+
+    <button type="submit">Submit To Retro</button>
+</form>
