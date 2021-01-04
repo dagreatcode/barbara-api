@@ -10,11 +10,12 @@
 <button type="submit">2</button>
 
 <ul>
-  {{#each poohmadeit}}
+  {{#each retroluxe}}
   	<li>
   	   <p>ID: {{this.id}}</p>
        <p>Name: {{this.name}}</p>
        <p>BinLocation: {{this.bin_location}}</p>
+       <p>Description: {{this.description}}</p>
   	</li>
   {{/each}}
 </ul>
@@ -25,3 +26,15 @@
 
     <button type="submit">Submit To Retro</button>
 </form>
+
+{{!-- <form action="/api/retroluxe/:id" method="DELETE">
+    <textarea type="number" name="retroluxe"></textarea>
+
+    <button type="submit">Update Retro</button>
+</form> --}}
+
+{{!-- <form action="/api/retroluxe/:id/delete" method="POST">
+    <textarea type="text" name="retroluxe"></textarea>
+
+    <button type="submit">Delete By ID Retro</button>
+</form> --}}

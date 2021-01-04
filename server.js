@@ -37,7 +37,7 @@ connection.connect(function (err) {
   console.log("connected as id " + connection.threadId);
 });
 
-// Config test
+// Config test api route. If true, it works.
 app.get("/api/config", (req, res) => {
   res.json({
     success: true,
@@ -94,9 +94,42 @@ app.get("/api/config", (req, res) => {
 
 // });
 
+// // Update a name
+// app.put("/api/retroluxe/:id", function(req, res) {
+//   connection.query("UPDATE retroluxe SET name = ? WHERE id = ?", [req.body.name, req.params.id], function(err, result) {
+//     if (err) {
+//       // If an error occurred, send a generic server failure
+//       return res.status(500).end();
+//     }
+//     else if (result.changedRows === 0) {
+//       // If no rows were changed, then the ID must not exist, so 404
+//       return res.status(404).end();
+//     }
+//     res.status(200).end();
+
+//   });
+// });
+
+// // Delete a name
+// app.delete("/api/retroluxe/:id", function(req, res) {
+//   connection.query("DELETE FROM retroluxe WHERE id 7", [req.params.id], function(err, result) {
+//     if (err) {
+//       // If an error occurred, send a generic server failure
+//       return res.status(500).end();
+//     }
+//     else if (result.affectedRows === 0) {
+//       // If no rows were changed, then the ID must not exist, so 404
+//       return res.status(404).end();
+//     }
+//     res.status(200).end();
+
+//   });
+// });
+
+// Create a new data
 app.post("/api/retroluxe", (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO retroluxe (name, bin_location, description) VALUES ("New Item", 0, "relaxed")`, [req.body.name], (err, data) => {
+  connection.query(`INSERT INTO retroluxe (name, bin_location, description) VALUES ("New Item", 1, "relaxed")`, [req.body.name, req.params.id], (err, data) => {
       if (err) {
         throw err;
       }
@@ -110,8 +143,9 @@ app.post("/api/retroluxe", (req, res) => {
 });
 
 // Views Routes
+// Use Handlebars to render the main index.html page with the data in it.
 app.get("/", (req, res) => {
-  connection.query("SELECT * FROM poohmadeit", (eer, data) => {
+  connection.query("SELECT * FROM retroluxe", (eer, data) => {
     console.table(data);
     res.render("index", { myName: "Barbara Kendrick", name: "Great Day" });
     // res.render("index", { poohmadeit: data[0].name });
