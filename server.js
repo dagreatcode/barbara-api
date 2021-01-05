@@ -3,6 +3,9 @@ const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 const connection = require("./config/connection");
 const orm = require("./config/orm");
+// const routes = require("./controllers/retroluxeController.js");
+
+
 
 // Create instance of express app.
 const app = express();
@@ -14,9 +17,13 @@ const PORT = process.env.PORT || 8080;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// Use the express.static middleware to serve static content for the app from the "public" directory in the application directory. css/js.
+app.use(express.static("public"));
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+// Routes
+// app.use(routes);
 
 // MySQL DB Connection Information (remember to change this with our specific credentials)
 // This was moved to connection.js
@@ -43,6 +50,22 @@ app.get("/api/config", (req, res) => {
     success: true,
   });
 });
+
+// // My ORM
+// var orm = {
+//     selectWhere: function(name, bin_location, description, cb) {
+//     // var queryString = "SELECT * FROM ?? WHERE ?? = ?";
+//     var queryString = "SELECT * FROM ??";
+//     connection.query(queryString, [name, bin_location, description], function(err, result) {
+//       if (err) throw err;
+//       cb(result);
+//     });
+//   } 
+// }
+// orm.selectWhere("poohmadeit", "name", "bin_location", "description", function(result) {
+//   var data = result;
+//   console.log(data);
+// });
 
 //Full CRUD API Routes
 
@@ -129,7 +152,7 @@ app.get("/api/config", (req, res) => {
 // Create a new data
 app.post("/api/retroluxe", (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO retroluxe (name, bin_location, description) VALUES ("New Item", 1, "relaxed")`, [req.body.name, req.params.id], (err, data) => {
+  connection.query(`INSERT INTO retroluxe (name, bin_location, description) VALUES ("New Item", 1, "relaxed")`, [req.body.name, req.body.bin_location, req.body.description, req.params.id], (err, data) => {
       if (err) {
         throw err;
       }
