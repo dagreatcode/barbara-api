@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "watch": "nodemon server.js",
     "build": ""
   },
   "repository": {
@@ -21,6 +22,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.6",
+    "sequelize": "^6.3.5"
   }
 }
