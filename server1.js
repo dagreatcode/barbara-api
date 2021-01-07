@@ -2,23 +2,11 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 const connection = require("./config/connection");
-// const orm = require("./config/orm");
-// TODO: Take in info from user
-// const itemName;
-// const binLocation;
-// const itemDescription;
-// const itemImage;
-// const routes = require("./controllers/retroluxeController.js");
-
-
-
 // Create instance of express app.
 const app = express();
-
 // Set the port of our application
 // process.env.PORT lets the port be set by Heroku + 3001;
 const PORT = process.env.PORT || 8080;
-
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -40,14 +28,14 @@ app.set("view engine", "handlebars");
 //   database: "retroluxe_db"
 // });
 
-// // Initiate MySQL Connection.
-// connection.connect(function (err) {
-//   if (err) {
-//     console.error("error connecting: " + err.stack);
-//     return;
-//   }
-//   console.log("connected as id " + connection.threadId);
-// });
+// Initiate MySQL Connection.
+connection.connect(function (err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
+  console.log("connected as id " + connection.threadId);
+});
 
 // Config test api route. If true, it works.
 app.get("/api/config", (req, res) => {
