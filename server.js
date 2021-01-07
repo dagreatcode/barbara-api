@@ -32,22 +32,22 @@ app.set("view engine", "handlebars");
 
 // MySQL DB Connection Information (remember to change this with our specific credentials)
 // This was moved to connection.js
-// const connection = mysql.createConnection({
-//   host: "localhost",
-//   port: 3306,
-//   user: "root",
-//   password: "password",
-//   database: "retroluxe_db"
-// });
+const connection = mysql.createConnection({
+  host: "localhost",
+  port: 3306,
+  user: "root",
+  password: "password",
+  database: "retroluxe_db"
+});
 
 // // Initiate MySQL Connection.
-// connection.connect(function (err) {
-//   if (err) {
-//     console.error("error connecting: " + err.stack);
-//     return;
-//   }
-//   console.log("connected as id " + connection.threadId);
-// });
+connection.connect(function (err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
+  console.log("connected as id " + connection.threadId);
+});
 
 // Config test api route. If true, it works.
 app.get("/api/config", (req, res) => {
