@@ -276,7 +276,7 @@ app.get("/retroluxe", function (req, res) {
         // html += "<p> Name: " + result[i].name + "</p>";
         // html += "<p> bin_location: " + result[i].bin_location + "</p>";
         // html += "<p>description: " + result[i].description + "</p></li>";
-        html = html + `<p>${result[i].id} - ${result[i].name} - ${result[i].bin_location} - ${result[i].description}</p>`
+        html = html + `<p>${result[i].id} - ${result[i].name} - ${result[i].bin_location} - ${result[i].description}</p>`;
       }
 
       html += "</ul>";
