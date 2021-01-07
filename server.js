@@ -1,7 +1,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require("mysql");
-const connection = require("./config/connection");
+// const connection = require("./config/connection");
 // const orm = require("./config/orm");
 // TODO: Take in info from user
 // const itemName;
