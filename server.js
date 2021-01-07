@@ -202,7 +202,7 @@ app.post("/api/poohmadeit", (req, res) => {
 // });
 app.get("/", function (req, res) {
   // res.json(path.join(__dirname, "public/index.html"));
-  res.send(`<h1>Testing Testing</h1>`);
+  res.send(`<h1>Home Page</h1>`);
 });
 
 // app.get("/", function (req, res) {
