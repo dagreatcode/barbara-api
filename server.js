@@ -189,16 +189,20 @@ app.post("/api/poohmadeit", (req, res) => {
 // TODO: Bring all view routes here. Then move to orm.
 // Views Routes
 // Use Handlebars to render the main index.html page with the data in it.
-app.get("/", (req, res) => {
-  connection.query("SELECT * FROM retroluxe", (eer, data) => {
-    // const show = retroluxe.filter(luxe => luxe.description);
-    console.table(data);
-    res.render("index", {bin_location: data[0].bin_location, description: data[0].description, name: data[0].name, myName: "Barbara Kendrick", chatSay: "Great Day"});
+// app.get("/", (req, res) => {
+//   connection.query("SELECT * FROM retroluxe", (eer, data) => {
+//     // const show = retroluxe.filter(luxe => luxe.description);
+//     console.table(data);
+//     res.render("index", {bin_location: data[0].bin_location, description: data[0].description, name: data[0].name, myName: "Barbara Kendrick", chatSay: "Great Day"});
 
-    // res.render("index", {retroluxe: data[1].name, myName: "Barbara Kendrick", name: "Great Day"});
-    // res.render("index", { poohmadeit: data[0].name });
-  });
+//     // res.render("index", {retroluxe: data[1].name, myName: "Barbara Kendrick", name: "Great Day"});
+//     // res.render("index", { poohmadeit: data[0].name });
+//   });
+//   // res.json(path.join(__dirname, "public/index.html"));
+// });
+app.get("/", function (req, res) {
   // res.json(path.join(__dirname, "public/index.html"));
+  res.send(`<h1>Testing Testing</h1>`);
 });
 
 // app.get("/", function (req, res) {
