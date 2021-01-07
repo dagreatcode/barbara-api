@@ -234,17 +234,14 @@ app.get("/", function (req, res) {
     // res.json(path.join(__dirname, "public/index.html"));
     // res.send(`<h1>New Data Here</h1>`);
 
-app.get("/database", function (req, res) {
-    connection.query("SELECT * FROM poohmadeit", (eer, data) => {
-      for (let i = 0; i < data.length; i++) {
-        console.log(data[i]);
-        res.render("database", {poohmadeit: data[i]});
-      };
-    });
-      // const show = retroluxe.filter(luxe => luxe.description);
-  // res.json(path.join(__dirname, "public/index.html"));
-  // res.render("database");
-});
+// app.get("/database", function (req, res) {
+//     connection.query("SELECT * FROM poohmadeit", (eer, data) => {
+//       for (let i = 0; i < data.length; i++) {
+//         console.log(data[i]);
+//         res.render("database", {poohmadeit: data[i]});
+//       };
+//     });
+// });
 
 // app.get("/database", function (req, res) {
 //   connection.query("SELECT * FROM retroluxe", (eer, data) => {
@@ -256,15 +253,15 @@ app.get("/database", function (req, res) {
 // });
 
 
-app.get("/new", function (req, res) {
-  // res.json(path.join(__dirname, "public/index.html"));
-  res.send(`<h1>New Data Here</h1>`);
-});
+// app.get("/new", function (req, res) {
+//   // res.json(path.join(__dirname, "public/index.html"));
+//   res.send(`<h1>New Data Here</h1>`);
+// });
 
-app.get("edit/:id", function (req, res) {
-  // res.json(path.join(__dirname, "public/index.html"));
-  res.send(`<h1>Edit Data Here</h1>`);
-});
+// app.get("edit/:id", function (req, res) {
+//   // res.json(path.join(__dirname, "public/index.html"));
+//   res.send(`<h1>Edit Data Here</h1>`);
+// });
 
 // Render Page you are pulling
 // app.get("/index", function(req, res) {
