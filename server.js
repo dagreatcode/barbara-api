@@ -152,7 +152,7 @@ app.get("/api/config", (req, res) => {
 // Create a new data
 app.post("/api/retroluxe", (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO retroluxe (name, bin_location, description) VALUES ("New Item", 1, "relaxed")`, [req.body.name, req.body.bin_location, req.body.description, req.params.id], (err, data) => {
+  connection.query(`INSERT INTO retroluxe (name, bin_location, description, img) VALUES ("New Item", 1, "relaxed", ?)`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.params.id], (err, data) => {
       if (err) {
         throw err;
       }
@@ -167,7 +167,7 @@ app.post("/api/retroluxe", (req, res) => {
 
 app.post("/api/poohmadeit", (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO poohmadeit (name, bin_location, description) VALUES ("New Item", 3, "You can chill in this all day long.")`, [req.body.name, req.body.bin_location, req.body.description, req.params.id], (err, data) => {
+  connection.query(`INSERT INTO poohmadeit (name, bin_location, description, img) VALUES ("New Item", 3, "You can chill in this all day long.", ?)`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.params.id], (err, data) => {
       if (err) {
         throw err;
       }
@@ -185,13 +185,44 @@ app.post("/api/poohmadeit", (req, res) => {
 app.get("/", (req, res) => {
   connection.query("SELECT * FROM retroluxe", (eer, data) => {
     console.table(data);
-    res.render("index", { myName: "Barbara Kendrick", name: "Great Day" });
+    res.render("index", { myName: "Barbara Kendrick", name: "Great Day"});
     // res.render("index", { poohmadeit: data[0].name });
   });
-  connection.query("SELECT * FROM poohmadeit", (eer, data) => {
-    console.table(data);
-  });
   // res.json(path.join(__dirname, "public/index.html"));
+});
+
+// app.get("/", function (req, res) {
+//   connection.query("SELECT * FROM poohmadeit", (eer, data) => {
+//     console.table(data);
+//     res.render("index", { poohmadeit: data[0].name });
+//   });
+// });
+
+// app.get("/database/:bin", function (req, res) {
+//   connection.query(
+//     "SELECT * FROM poohmadeit",
+//     function (err, result) {
+//       if (err) throw err;
+//       for (let i = 0; i < poohmadeit.length; i++) {
+//         if (poohmadeit[i].bin_location === req.params.bin_location){
+//           console.log(poohmadeit[i]);
+//           res.render("database", {  
+//             // poohmadeit[i]
+//             name: poohmadeit[i].name,
+//             bin_location: poohmadeit[i].bin_location,
+//             description: poohmadeit[i].description
+//             })
+//         }     
+//       }
+//     });   
+// });
+
+    // res.json(path.join(__dirname, "public/index.html"));
+    // res.send(`<h1>New Data Here</h1>`);
+
+app.get("/database", function (req, res) {
+  // res.json(path.join(__dirname, "public/index.html"));
+  res.render("database");
 });
 
 app.get("/new", function (req, res) {
@@ -226,7 +257,8 @@ app.get("/poohmadeit", function (req, res) {
         html += "<li><p> ID: " + result[i].id + "</p>";
         html += "<p> Name: " + result[i].name + "</p>";
         html += "<p> bin_location: " + result[i].bin_location + "</p>";
-        html += "<p>description: " + result[i].description + "</p></li>";
+        html += "<p>description: " + result[i].description + "</p>";
+        html += "<p>img: " + result[i].description + "</p></li>";
       }
 
       html += "</ul>";
@@ -251,7 +283,8 @@ app.get("/poohmadeit/:bin", function (req, res) {
         html += "<li><p> ID: " + result[i].id + "</p>";
         html += "<p> Name: " + result[i].name + "</p>";
         html += "<p> bin_location: " + result[i].bin_location + "</p>";
-        html += "<p>description: " + result[i].description + "</p></li>";
+        html += "<p>description: " + result[i].description + "</p>";
+        html += "<p>img: " + result[i].img + "</p></li>";
       }
 
       html += "</ul>";
@@ -276,7 +309,7 @@ app.get("/retroluxe", function (req, res) {
         // html += "<p> Name: " + result[i].name + "</p>";
         // html += "<p> bin_location: " + result[i].bin_location + "</p>";
         // html += "<p>description: " + result[i].description + "</p></li>";
-        html = html + `<p>${result[i].id} - ${result[i].name} - ${result[i].bin_location} - ${result[i].description}</p>`;
+        html = html + `<p>${result[i].id} - ${result[i].name} - ${result[i].bin_location} - ${result[i].description} - ${result[i].img}</p>`;
       }
 
       html += "</ul>";
@@ -301,7 +334,8 @@ app.get("/retroluxe/:bin", function (req, res) {
         html += "<li><p> ID: " + result[i].id + "</p>";
         html = html + "<p> Name: " + result[i].name + "</p>";
         html += "<p> bin_location: " + result[i].bin_location + "</p>";
-        html += "<p>description: " + result[i].description + "</p></li>";
+        html += "<p>description: " + result[i].description + "</p>";
+        html += "<p>img: " + result[i].img + "</p></li>";
       }
 
       html += "</ul>";
