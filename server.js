@@ -4,10 +4,10 @@ const mysql = require("mysql");
 const connection = require("./config/connection");
 const orm = require("./config/orm");
 // TODO: Take in info from user
-const itemName;
-const binLocation;
-const itemDescription;
-const itemImage;
+// const itemName;
+// const binLocation;
+// const itemDescription;
+// const itemImage;
 // const routes = require("./controllers/retroluxeController.js");
 
 
@@ -193,7 +193,7 @@ app.get("/", (req, res) => {
   connection.query("SELECT * FROM retroluxe", (eer, data) => {
     // const show = retroluxe.filter(luxe => luxe.description);
     console.table(data);
-    res.render("index", {bin_location: data[1].bin_location, description: data[1].description, name: data[1].name, myName: "Barbara Kendrick", chatSay: "Great Day"});
+    res.render("index", {bin_location: data[0].bin_location, description: data[0].description, name: data[0].name, myName: "Barbara Kendrick", chatSay: "Great Day"});
 
     // res.render("index", {retroluxe: data[1].name, myName: "Barbara Kendrick", name: "Great Day"});
     // res.render("index", { poohmadeit: data[0].name });
