@@ -6,25 +6,60 @@
 <h1>{{poohmadeit}}</h1>
 <h1>{{retroluxe}}</h1>
 
-<button type="submit">1</button>
-<button type="submit">2</button>
 
 <ul>
-  {{#each retroluxe}}
-  	<li>
-  	   <p>ID: {{this.id}}</p>
-       <p>Name: {{this.name}}</p>
-       <p>BinLocation: {{this.bin_location}}</p>
-       <p>Description: {{this.description}}</p>
-  	</li>
-  {{/each}}
+    {{#each retroluxe}}
+    <li>
+        <p>ID: {{this.id}}</p>
+        <p>Name: {{this.name}}</p>
+        <p>BinLocation: {{this.bin_location}}</p>
+        <p>Description: {{this.description}}</p>
+    </li>
+    {{/each}}
 </ul>
 
 
 <form action="/api/retroluxe" method="POST">
-    <textarea type="text" name="retroluxe"></textarea>
-
-    <button type="submit">Submit To Retro</button>
+    <div class="mb-3">
+        <div id="dataHelp" class="form-text">Send data to retroluxe.</div>
+        <div>
+            <input type="text" class="form-control" id="name">
+            <label for="name" class="form-label">name</label>
+        </div>
+        <div>
+            <input type="number" class="form-control" id="bin_location">
+            <label for="bin_location" class="form-label">bin_location</label>
+        </div>
+        <textarea type="text" name="retroluxe">Description</textarea>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Add High Rank</label>
+    </div>
+    <button type="submit">upload photo</button>
+    <button type="submit">Submit To retroluxe</button>
+</form>
+<br>
+<form action="/api/poohmadeit" method="POST">
+    <div class="mb-3">
+        {{!-- <div><input type="text" class="form-control" id="inputName" aria-describedby="dataHelp"></div> --}}
+        <div id="dataHelp" class="form-text">Send data to poohmadeit.</div>
+        <div>
+            <input type="text" class="form-control" id="name">
+            <label for="name" class="form-label">name</label>
+        </div>
+        <div>
+            <input type="number" class="form-control" id="bin_location">
+            <label for="bin_location" class="form-label">bin_location</label>
+        </div>
+        <textarea type="text" name="poohmadeit">Description</textarea>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Add High Rank</label>
+    </div>
+    <button type="submit">upload photo</button>
+    <button type="submit">Submit To Poohmadeit</button>
 </form>
 
 {{!-- <form action="/api/retroluxe/:id" method="DELETE">

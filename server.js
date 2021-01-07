@@ -165,6 +165,21 @@ app.post("/api/retroluxe", (req, res) => {
     })
 });
 
+app.post("/api/poohmadeit", (req, res) => {
+  console.log(req.body);
+  connection.query(`INSERT INTO poohmadeit (name, bin_location, description) VALUES ("New Item", 3, "You can chill in this all day long.")`, [req.body.name, req.body.bin_location, req.body.description, req.params.id], (err, data) => {
+      if (err) {
+        throw err;
+      }
+      res.redirect("/");
+  //     res.json({
+  //       error: false,
+  //       data: null,
+  //       message: "Wrote data to poohmadeit.",
+  //     })
+    })
+});
+
 // Views Routes
 // Use Handlebars to render the main index.html page with the data in it.
 app.get("/", (req, res) => {
@@ -173,9 +188,9 @@ app.get("/", (req, res) => {
     res.render("index", { myName: "Barbara Kendrick", name: "Great Day" });
     // res.render("index", { poohmadeit: data[0].name });
   });
-  // connection.query("SELECT * FROM poohmadeit", (eer, data) => {
-  //   console.table(data);
-  // });
+  connection.query("SELECT * FROM poohmadeit", (eer, data) => {
+    console.table(data);
+  });
   // res.json(path.join(__dirname, "public/index.html"));
 });
 
@@ -248,7 +263,7 @@ app.get("/poohmadeit/:bin", function (req, res) {
 
 app.get("/retroluxe", function (req, res) {
   connection.query(
-    "SELECT * FROM retroluxe ORDER BY bin_location DESC",
+    "SELECT * FROM retroluxe ORDER BY bin_location",
     function (err, result) {
       if (err) throw err;
 
@@ -283,7 +298,7 @@ app.get("/retroluxe/:bin", function (req, res) {
 
       for (let i = 0; i < result.length; i++) {
         html += "<li><p> ID: " + result[i].id + "</p>";
-        html += "<p> Name: " + result[i].name + "</p>";
+        html = html + "<p> Name: " + result[i].name + "</p>";
         html += "<p> bin_location: " + result[i].bin_location + "</p>";
         html += "<p>description: " + result[i].description + "</p></li>";
       }
