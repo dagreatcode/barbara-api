@@ -1,9 +1,10 @@
 <h1>Hello</h1>
 <h1>{{myName}}</h1>
-<h1>{{name}}</h1>
-<h1>{{bin_location}}</h1>
-<h1>{{description}}</h1>
-<h1>{{img}}</h1>
+<h1>{{chatSay}}</h1>
+<h1>Name: {{name}}</h1>
+<h1>Bin: {{bin_location}}</h1>
+<h1>Description: {{description}}</h1>
+<h1>Image: {{img}}</h1>
 <h1>{{poohmadeit}}</h1>
 <h1>{{retroluxe}}</h1>
 
@@ -15,7 +16,18 @@
         <p>Name: {{this.name}}</p>
         <p>BinLocation: {{this.bin_location}}</p>
         <p>Description: {{this.description}}</p>
-        <p>Description: {{this.img}}</p>
+        <p>Image: {{this.img}}</p>
+    </li>
+    {{/each}}
+</ul>
+<ul>
+    {{#each poohmadeit}}
+    <li>
+        <p>ID: {{this.id}}</p>
+        <p>Name: {{this.name}}</p>
+        <p>BinLocation: {{this.bin_location}}</p>
+        <p>Description: {{this.description}}</p>
+        <p>Image: {{this.img}}</p>
     </li>
     {{/each}}
 </ul>

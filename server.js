@@ -3,6 +3,11 @@ const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 const connection = require("./config/connection");
 const orm = require("./config/orm");
+// TODO: Take in info from user
+const itemName;
+const binLocation;
+const itemDescription;
+const itemImage;
 // const routes = require("./controllers/retroluxeController.js");
 
 
@@ -67,6 +72,7 @@ app.get("/api/config", (req, res) => {
 //   console.log(data);
 // });
 
+// TODO: Move all CRUD routes inside of this, Then move all CRUD to the config/orm.js /route.js
 //Full CRUD API Routes
 
 // // Create
@@ -152,7 +158,7 @@ app.get("/api/config", (req, res) => {
 // Create a new data
 app.post("/api/retroluxe", (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO retroluxe (name, bin_location, description, img) VALUES ("New Item", 1, "relaxed", ?)`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.params.id], (err, data) => {
+  connection.query(`INSERT INTO retroluxe (name, bin_location, description, img) VALUES ("New Item", 1, "relaxed", "")`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.params.id], (err, data) => {
       if (err) {
         throw err;
       }
@@ -167,7 +173,7 @@ app.post("/api/retroluxe", (req, res) => {
 
 app.post("/api/poohmadeit", (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO poohmadeit (name, bin_location, description, img) VALUES ("New Item", 3, "You can chill in this all day long.", ?)`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.params.id], (err, data) => {
+  connection.query(`INSERT INTO poohmadeit (name, bin_location, description, img) VALUES ("New Item", 3, "You can chill in this all day long.", "")`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.params.id], (err, data) => {
       if (err) {
         throw err;
       }
@@ -180,12 +186,16 @@ app.post("/api/poohmadeit", (req, res) => {
     })
 });
 
+// TODO: Bring all view routes here. Then move to orm.
 // Views Routes
 // Use Handlebars to render the main index.html page with the data in it.
 app.get("/", (req, res) => {
   connection.query("SELECT * FROM retroluxe", (eer, data) => {
+    // const show = retroluxe.filter(luxe => luxe.description);
     console.table(data);
-    res.render("index", { myName: "Barbara Kendrick", name: "Great Day"});
+    res.render("index", {bin_location: data[1].bin_location, description: data[1].description, name: data[1].name, myName: "Barbara Kendrick", chatSay: "Great Day"});
+
+    // res.render("index", {retroluxe: data[1].name, myName: "Barbara Kendrick", name: "Great Day"});
     // res.render("index", { poohmadeit: data[0].name });
   });
   // res.json(path.join(__dirname, "public/index.html"));
@@ -221,9 +231,26 @@ app.get("/", (req, res) => {
     // res.send(`<h1>New Data Here</h1>`);
 
 app.get("/database", function (req, res) {
+    connection.query("SELECT * FROM poohmadeit", (eer, data) => {
+      for (let i = 0; i < data.length; i++) {
+        console.log(data[i]);
+        res.render("database", {poohmadeit: data[i]});
+      };
+    });
+      // const show = retroluxe.filter(luxe => luxe.description);
   // res.json(path.join(__dirname, "public/index.html"));
-  res.render("database");
+  // res.render("database");
 });
+
+// app.get("/database", function (req, res) {
+//   connection.query("SELECT * FROM retroluxe", (eer, data) => {
+//     for (let i = 0; i < data.length; i++) {
+//       console.log(data[i]);
+//       res.render("database", {retroluxe: data[i]});
+//     };
+//   });
+// });
+
 
 app.get("/new", function (req, res) {
   // res.json(path.join(__dirname, "public/index.html"));
