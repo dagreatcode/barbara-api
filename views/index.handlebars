@@ -22,21 +22,25 @@
 <form action="/api/retroluxe" method="POST">
     <div class="mb-3">
         <div id="dataHelp" class="form-text">Send data to retroluxe.</div>
+          {{!-- <div>
+            <input type="text" class="form-control" id="collectionName">
+            <label for="collectionName" class="form-label">Collection Name</label>
+        </div> --}}
         <div>
             <input type="text" class="form-control" id="name">
-            <label for="name" class="form-label">name</label>
+            <label for="name" class="form-label">Item Name</label>
         </div>
         <div>
             <input type="number" class="form-control" id="bin_location">
-            <label for="bin_location" class="form-label">bin_location</label>
+            <label for="bin_location" class="form-label">Bin Location</label>
         </div>
         <textarea type="text" name="retroluxe">Description</textarea>
     </div>
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Add High Rank</label>
+        <label class="form-check-label" for="exampleCheck1">Add To High Rank</label>
     </div>
-    <button type="submit">upload photo</button>
+    <button type="submit">Upload Photo</button>
     <button type="submit">Submit To retroluxe</button>
 </form>
 <br>
@@ -46,11 +50,11 @@
         <div id="dataHelp" class="form-text">Send data to poohmadeit.</div>
         <div>
             <input type="text" class="form-control" id="name">
-            <label for="name" class="form-label">name</label>
+            <label for="name" class="form-label">Item Name</label>
         </div>
         <div>
             <input type="number" class="form-control" id="bin_location">
-            <label for="bin_location" class="form-label">bin_location</label>
+            <label for="bin_location" class="form-label">Bin Location</label>
         </div>
         <textarea type="text" name="poohmadeit">Description</textarea>
     </div>
