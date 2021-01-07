@@ -1,7 +1,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require("mysql");
-// const connection = require("./config/connection");
+const connection = require("./config/connection");
 // const orm = require("./config/orm");
 // TODO: Take in info from user
 // const itemName;
@@ -200,17 +200,17 @@ app.post("/api/poohmadeit", (req, res) => {
 //   });
 //   // res.json(path.join(__dirname, "public/index.html"));
 // });
-app.get("/", function (req, res) {
-  // res.json(path.join(__dirname, "public/index.html"));
-  res.send(`<h1>Home Page</h1>`);
-});
-
 // app.get("/", function (req, res) {
-//   connection.query("SELECT * FROM poohmadeit", (eer, data) => {
-//     console.table(data);
-//     res.render("index", { poohmadeit: data[0].name });
-//   });
+//   // res.json(path.join(__dirname, "public/index.html"));
+//   res.send(`<h1>Home Page</h1>`);
 // });
+
+app.get("/", function (req, res) {
+  connection.query("SELECT * FROM poohmadeit", (eer, data) => {
+    console.table(data);
+    res.render("index", { poohmadeit: data[0].name });
+  });
+});
 
 // app.get("/database/:bin", function (req, res) {
 //   connection.query(
