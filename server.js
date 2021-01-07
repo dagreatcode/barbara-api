@@ -158,7 +158,7 @@ app.get("/api/config", (req, res) => {
 // Create a new data
 app.post("/api/retroluxe", (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO retroluxe (name, bin_location, description, img) VALUES ("New Item", 1, "relaxed", "")`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.params.id], (err, data) => {
+  connection.query(`INSERT INTO retroluxe (name, bin_location, description, img, timestamp) VALUES ("New Item", 1, "relaxed", "")`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.body.timestamp, req.params.id], (err, data) => {
       if (err) {
         throw err;
       }
@@ -173,7 +173,7 @@ app.post("/api/retroluxe", (req, res) => {
 
 app.post("/api/poohmadeit", (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO poohmadeit (name, bin_location, description, img) VALUES ("New Item", 3, "You can chill in this all day long.", "")`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.params.id], (err, data) => {
+  connection.query(`INSERT INTO poohmadeit (name, bin_location, description, img) VALUES ("New Item", 3, "You can chill in this all day long.", "")`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.body.timestamp, req.params.id], (err, data) => {
       if (err) {
         throw err;
       }
