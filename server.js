@@ -336,11 +336,12 @@ app.post("/api/poohmadeit", (req, res) => {
       if (err) {
          return res.status(500).end();
       }
-      res.json({
-        error: false,
-        data: null,
-        message: "Wrote data to poohmadeit.",
-      })
+      // res.json({
+      //   error: false,
+      //   data: null,
+      //   message: "Wrote data to poohmadeit.",
+      // })
+      res.redirect("/");
   });
 });
 
@@ -360,11 +361,12 @@ app.post("/api/retroluxe", function (req, res) {
         return res.status(500).end();
       }
       // Send back the ID of the new name
-      res.json({
-        error: false,
-        data: null,
-        message: "Wrote data to retroluxe.",
-      });
+      // res.json({
+      //   error: false,
+      //   data: null,
+      //   message: "Wrote data to retroluxe.",
+      // });
+      res.redirect("/");
     });
 });
 
