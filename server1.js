@@ -159,20 +159,20 @@ app.post("/api/retroluxe", (req, res) => {
     })
 });
 
-app.post("/api/poohmadeit", (req, res) => {
-  console.log(req.body);
-  connection.query(`INSERT INTO poohmadeit (name, bin_location, description, img) VALUES ("New Item", 3, "You can chill in this all day long.", "")`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.body.timestamp, req.params.id], (err, data) => {
-      if (err) {
-        throw err;
-      }
-      res.redirect("/");
-  //     res.json({
-  //       error: false,
-  //       data: null,
-  //       message: "Wrote data to poohmadeit.",
-  //     })
-  });
-});
+// app.post("/api/poohmadeit", (req, res) => {
+//   console.log(req.body);
+//   connection.query(`INSERT INTO poohmadeit (name, bin_location, description, img) VALUES ("New Item", 3, "You can chill in this all day long.", "")`, [req.body.name, req.body.bin_location, req.body.description, req.body.img, req.body.timestamp, req.params.id], (err, data) => {
+//       if (err) {
+//         throw err;
+//       }
+//       res.redirect("/");
+//   //     res.json({
+//   //       error: false,
+//   //       data: null,
+//   //       message: "Wrote data to poohmadeit.",
+//   //     })
+//   });
+// });
 
 // TODO: Bring all view routes here. Then move to orm.
 // Views Routes

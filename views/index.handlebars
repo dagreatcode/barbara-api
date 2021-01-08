@@ -4,18 +4,6 @@
 <h1>What Would You Like To Do Today?</h1>
 
 <ul>
-    {{#each retroluxe}}
-    <li>
-        <p>ID: {{this.id}}</p>
-        <p>Name: {{this.name}}</p>
-        <p>BinLocation: {{this.bin_location}}</p>
-        <p>Description: {{this.description}}</p>
-        <p>Image: {{this.img}}</p>
-        <p>Timestamp: {{this.timestamp}}</p>
-    </li>
-    {{/each}}
-</ul>
-<ul>
     {{#each poohmadeit}}
     <li>
         <p>ID: {{this.id}}</p>
@@ -27,69 +15,58 @@
     </li>
     {{/each}}
 </ul>
+<ul>
+    {{#each retroluxe}}
+    <li>
+        <p>ID: {{this.id}}</p>
+        <p>Name: {{this.name}}</p>
+        <p>BinLocation: {{this.bin_location}}</p>
+        <p>Description: {{this.description}}</p>
+        <p>Image: {{this.img}}</p>
+        <p>Timestamp: {{this.timestamp}}</p>
+    </li>
+    {{/each}}
+</ul>
 
-
-<form action="/api/retroluxe" method="POST">
-    <div class="mb-3">
+<form method="POST" id="createRetro">
+    {{!-- <form action="/api/retroluxe" method="POST" id="createRetro"> --}}
         <div id="dataHelp" class="form-text">Send data to retroluxe.</div>
-        {{!-- <div>
-            <input type="text" class="form-control" id="collectionName">
-            <label for="collectionName" class="form-label">Collection Name</label>
-        </div> --}}
-        <div>
-            <input type="text" class="form-control" id="name">
-            <label for="name" class="form-label">Item Name</label>
-        </div>
-        <div>
-            <input type="number" class="form-control" id="bin_location">
-            <label for="bin_location" class="form-label">Bin Location</label>
-        </div>
-        <textarea type="text" name="retroluxe">Description: </textarea>
-    </div>
-    <div class="mb-3">
-        <label for="formFileSm" class="form-label"></label>
-        <input class="form-control form-control-sm" id="formFileSm" type="file">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Important Item</label>
-    </div>
-    <button type="submit">Submit To retroluxe</button>
-</form>
-<br>
-<form action="/api/poohmadeit" method="POST">
-    <div class="mb-3">
-        {{!-- <div><input type="text" class="form-control" id="inputName" aria-describedby="dataHelp"></div> --}}
-        <div id="dataHelp" class="form-text">Send data to poohmadeit.</div>
-        <div>
-            <input type="text" class="form-control" id="name">
-            <label for="name" class="form-label">Item Name</label>
-        </div>
-        <div>
-            <input type="number" class="form-control" id="bin_location">
-            <label for="bin_location" class="form-label">Bin Location</label>
-        </div>
-        <textarea type="text" name="poohmadeit">Description: </textarea>
-    </div>
-    <div class="mb-3">
-        <label for="formFileSm" class="form-label"></label>
-        <input class="form-control form-control-sm" id="formFileSm" type="file">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Important Item</label>
-    </div>
-    <button type="submit">Submit To Poohmadeit</button>
-</form>
+        <input placeholder="Item Name" type="text" class="form-control" id="name">
+        <br>
+        <input placeholder="Bin Location" type="number" class="form-control" id="bin_location">
+        <br>
+        <textarea type="text" name="retroluxe" id="description">Description: </textarea>
+        <br>
+        <input class="form-control form-control-sm" id="img" type="file">
+        <br>
+        <input type="checkbox" class="form-check-input" id="important">
+        <br>
+        <button type="submit">Submit To retroluxe</button>
+    </form>
+    <br>
 
-{{!-- <form action="/api/retroluxe/:id" method="DELETE">
-    <textarea type="number" name="retroluxe"></textarea>
+    <script type="text/javascript">
 
-    <button type="submit">Update Retro</button>
-</form> --}}
+        // When user chirps (clicks addBtn)
+        $("#createRetro").on("click", function (event) {
+            event.preventDefault();
 
-{{!-- <form action="/api/retroluxe/:id/delete" method="POST">
-    <textarea type="text" name="retroluxe"></textarea>
+            // Make a newRetro object
+            var newRetro = {
+                name: $("#name").val().trim(),
+                bin_location: $("#bin_location").val().trim(),
+                description: $("#description").val().trim(),
+                created_at: moment().format("YYYY-MM-DD HH:mm:ss")
+            };
 
-    <button type="submit">Delete By ID Retro</button>
-</form> --}}
+            console.log(newRetro);
+
+            // Send an AJAX POST-request with jQuery
+            $.post("/api/retroluxe", newRetro)
+                // On success, run the following code
+                .then(function () {
+                    console.log("added new Item");
+                    // Reload the page to get the updated list
+                });
+        });
+    </script>
