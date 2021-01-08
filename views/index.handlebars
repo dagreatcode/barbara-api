@@ -28,24 +28,39 @@
     {{/each}}
 </ul>
 
-<form method="POST" id="createRetro">
+<form action="/api/retroluxe" method="POST" id="createRetro">
     {{!-- <form action="/api/retroluxe" method="POST" id="createRetro"> --}}
         <div id="dataHelp" class="form-text">Send data to retroluxe.</div>
-        <input placeholder="Item Name" type="text" class="form-control" id="name">
+        <input placeholder="Item Name" name="name" type="text" class="form-control" id="name">
         <br>
-        <input placeholder="Bin Location" type="number" class="form-control" id="bin_location">
+        <input placeholder="Bin Location" name="bin_location" type="number" class="form-control" id="bin_location">
         <br>
-        <textarea type="text" name="retroluxe" id="description">Description: </textarea>
+        <textarea type="text" name="description" id="description">Description: </textarea>
         <br>
-        <input class="form-control form-control-sm" id="img" type="file">
+        <input class="form-control form-control-sm" name="img" id="img" type="file">
         <br>
-        <input type="checkbox" class="form-check-input" id="important">
+        <input type="checkbox" name="important" class="form-check-input" id="important">
         <br>
         <button type="submit">Submit To retroluxe</button>
     </form>
+    <form action="/api/poohmadeit" method="POST" id="createPooh">
+    {{!-- <form action="/api/poohmadeit" method="POST" id="createRetro"> --}}
+        <div id="dataHelp" class="form-text">Send data to poohmadeit.</div>
+        <input placeholder="Item Name" name="name" type="text" class="form-control" id="name">
+        <br>
+        <input placeholder="Bin Location" name="bin_location" type="number" class="form-control" id="bin_location">
+        <br>
+        <textarea type="text" name="description" id="description">Description: </textarea>
+        <br>
+        <input class="form-control form-control-sm" name="img" id="img" type="file">
+        <br>
+        <input type="checkbox" name="important" class="form-check-input" id="important">
+        <br>
+        <button type="submit">Submit To poohmadeit</button>
+    </form>
     <br>
 
-    <script type="text/javascript">
+    {{!-- <script type="text/javascript">
 
         // When user chirps (clicks addBtn)
         $("#createRetro").on("click", function (event) {
@@ -69,4 +84,4 @@
                     // Reload the page to get the updated list
                 });
         });
-    </script>
+    </script> --}}
