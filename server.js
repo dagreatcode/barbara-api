@@ -1,7 +1,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require("mysql");
-// const connection = require("./config/connection");
+const connection = require("./config/connection");
 // const orm = require("./config/orm");
 // TODO: Take in info from user
 // const itemName = ("#name");
@@ -30,13 +30,13 @@ app.set("view engine", "handlebars");
 
 // MySQL DB Connection Information (remember to change this with our specific credentials)
 // This was moved to connection.js
-const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "password",
-  database: "retroluxe_db",
-});
+// const connection = mysql.createConnection({
+//   host: "localhost",
+//   port: 3306,
+//   user: "root",
+//   password: "password",
+//   database: "retroluxe_db",
+// });
 
 // // Initiate MySQL Connection.
 connection.connect(function (err) {
