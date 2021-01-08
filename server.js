@@ -201,7 +201,6 @@ app.get("/", function (req, res) {
     res.render("index", {
       myName: "Barbara Kendrick",
       chatSay: "Great to see you again.",
-      poohmadeit: data,
     });
   });
 });
