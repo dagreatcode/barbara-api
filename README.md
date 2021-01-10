@@ -45,9 +45,6 @@ This is a API site. Only made to hold data for a every long time. Updates will a
 - [x] this is a complete item
 - [ ] this is an incomplete item
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
-
-
 ## Usage 
 
 ![Vincent Kendrick Commits](./public/assets/img/demo1.png)
@@ -87,46 +84,25 @@ Content in the first column | Content in the second column
 
 ## License
 
-The last section of a good README is a license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/)
-
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/dagreatcode/barbara-api/blob/main/LICENSE.txt)
 
 ---
 
-🏆 The sections listed above are the minimum for a good README, but your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
+🏆
 ## Badges 
-
-:sweat_drops:
-:light_rail:
-:scroll:
-:boom:
-:books:
-:notebook:
-:rocket:
-:sparkles:
-:curly_loop:
-![](https://raw.githubusercontent.com/acervenky/animated-github-badges/master/assets/pro.gif)
 
 ![barbara-api](https://img.shields.io/github/languages/top/dagreatcode/barbara-api)
 
 ![Profile views](https://gpvc.arturio.dev/dagreatcode)
 
-https://retroluxe.herokuapp.com/
 
 [![Vincent's github stats](https://github-readme-stats.vercel.app/api?username=dagreatcode&theme=blue-green)](https://github.com/dagreatcode/barbara-api)
 
 Badges aren't _necessary_, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
-
-## Contributing
-
-If you created an application or package and would like other developers to contribute it, you will want to add guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own.
-
 ## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them.
-
 
 ---
 © Vincent Kendrick Services, DaGreatCode, Inc. brand. All Rights Reserved.
 
+![](https://raw.githubusercontent.com/acervenky/animated-github-badges/master/assets/pro.gif)
