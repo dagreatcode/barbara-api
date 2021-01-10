@@ -17,7 +17,7 @@ Barbara's Database
 
 ## Description 
 
-In this project, I made a simple MySQL database, a express server, and deployed to Heroku. This database uses a JAWS database for a online service. The user can keep track of all of their items. 
+In this project, I made a simple MySQL database, with an express server, node, express-handlebars and deployed to Heroku. Full-Stack. This database uses a JAWS database for a online service. The user can keep track of all of their items. 
 
 # ER Diagram
 ![Vincent Kendrick Commits](./public/assets/img/erdiagram.png)
@@ -27,11 +27,12 @@ In this project, I made a simple MySQL database, a express server, and deployed 
 
 You can visit a collection by /poohmadeit , and also /retroluxe
 
+### Here we are showing a collections on the database API page.
 ![Vincent Kendrick Commits](./public/assets/img/demo2.png)
 
 
 
-This is a API site. Only made to hold data for a every long time. Updates will always be made on this site for the better. After all the functions are done, I will be making the front end look great. The user gets to fully custom the image of the site. The user will be able to Create Read Update Delete. Soon they will add more functions to the site...
+This is a API Database. Only made to hold data for a every long time, also images. Updates will always be made on this site for the better, almost every day or week. After all the functions are done, I will be making the front end look great. The user gets to fully customize the image of the site. The user will be able to Create, Read, Update, and Delete. Soon they will be more functions added to the site...
 
 ## Table of Contents
 
@@ -42,11 +43,11 @@ This is a API site. Only made to hold data for a every long time. Updates will a
 
 ## Installation
 
-
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
+There is no reason to download. Altho this site can work off the browser, Its purpose is to work on the browser, so that the user can also input data on the go/ mobile. Here are a few things to keep in mind.
+- [x] @dagreatcode, #A,B,C [links](), **Retro Luxe & Co. LLC**, and <del>tags</del> supported
+- [x] This site will be deployed on Heroku
+- [ ] Full CRUD is important and the whole point of this site.
+- [ ] API's will also be added to this site.
 
 ## Usage 
 
@@ -104,9 +105,10 @@ Content in the first column | Content in the second column
 
 [![Vincent's github stats](https://github-readme-stats.vercel.app/api?username=dagreatcode&theme=blue-green)](https://github.com/dagreatcode/barbara-api)
 
-Badges aren't _necessary_, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+<!-- Badges aren't _necessary_, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time. -->
 
 ## Tests
+Coming Soon!
 
 ---
 © Vincent Kendrick Services, DaGreatCode, Inc. brand. All Rights Reserved.
