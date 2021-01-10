@@ -29,6 +29,8 @@ You can visit a collection by /poohmadeit , and also /retroluxe
 
 ![Vincent Kendrick Commits](./public/assets/img/demo2.png)
 
+
+
 This is a API site. Only made to hold data for a every long time. Updates will always be made on this site for the better. After all the functions are done, I will be making the front end look great. The user gets to fully custom the image of the site. The user will be able to Create Read Update Delete. Soon they will add more functions to the site...
 
 ## Table of Contents
@@ -40,6 +42,7 @@ This is a API site. Only made to hold data for a every long time. Updates will a
 
 ## Installation
 
+
 - [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
 - [x] list syntax required (any unordered or ordered list supported)
 - [x] this is a complete item
@@ -48,6 +51,9 @@ This is a API site. Only made to hold data for a every long time. Updates will a
 ## Usage 
 
 ![Vincent Kendrick Commits](./public/assets/img/demo1.png)
+
+CRUD ALL DAY.
+![Vincent Kendrick Commits](./public/assets/img/7RESTfulRoutes.png)
 
 
 Name | Bin Location
