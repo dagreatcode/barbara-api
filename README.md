@@ -1,9 +1,64 @@
 # barbara-api
 Barbara's Database
 
-https://retroluxe.herokuapp.com/
+#### Click Here
+[![Generic badge](https://img.shields.io/badge/WebSite-Heroku-purple.svg)](https://retroluxe.herokuapp.com/)
 
-https://github.com/dagreatcode/barbara-api.git
+[![Generic badge](https://img.shields.io/badge/Repo_Link-Github-<COLOR>.svg)](https://github.com/dagreatcode/barbara-api.git)
+
+
+<!-- [Website Page](https://retroluxe.herokuapp.com/) -->
+
+<!-- 
+[Github Link](https://github.com/dagreatcode/barbara-api.git) -->
+
+
+
+
+## Description 
+
+In this project, I made a simple MySQL database, a express server, and deployed to Heroku. This database uses a JAWS database for a online service. The user can keep track of all of their items. 
+
+# ER Diagram
+![Vincent Kendrick Commits](./public/assets/img/erdiagram.png)
+## This shows the collections/ tables.
+
+# Database pages
+
+You can visit a collection by /poohmadeit , and also /retroluxe
+
+![Vincent Kendrick Commits](./public/assets/img/demo2.png)
+
+This is a API site. Only made to hold data for a every long time. Updates will always be made on this site for the better. After all the functions are done, I will be making the front end look great. The user gets to fully custom the image of the site. The user will be able to Create Read Update Delete. Soon they will add more functions to the site...
+
+## Table of Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
+
+## Installation
+
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+
+What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+
+
+## Usage 
+
+![Vincent Kendrick Commits](./public/assets/img/demo1.png)
+
+
+Name | Bin Location
+------------ | -------------
+Blah.1 | Blah.2
+Content in the first column | Content in the second column
+
+## Credits
 
 <img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
 
@@ -27,52 +82,6 @@ https://github.com/dagreatcode/barbara-api.git
 
 <img src="https://img.shields.io/badge/figma%20-%23F24E1E.svg?&style=for-the-badge&logo=figma&logoColor=white"/>
 
-## Description 
-
-In this project, I made a simple MySQL database, a express server, and deployed to Heroku. This database uses a JAWS database for a online service. The user can keep track of all of their items. 
-
-# ER Diagram
-![Vincent Kendrick Commits](./public/assets/img/erdiagram.png)
-## This shows the collections/ tables.
-
-The quality of a README often differentiates a good project from a bad project. A good one takes advantage of the opportunity to explain and showcase what your application does, justify the technologies used, and even talk about some of the challenges you faced and features you hope to implement in the future. A good README helps you stand out among the large crowd of developers putting their work on GitHub.
-
-There's no one right way to structure a good README. There is one very wrong way, however, and that is to not include a README at all or to create a very anemic one. This guide outlines a few best practices. As you progress in your career, you will develop your own ideas about what makes a good README.
-
-At a minimum, your project README needs a title and a short description explaining the what, why, and how. What was your motivation? Why did you build this project? (Note: The answer is not "Because it was a homework assignment.") What problem does it solve? What did you learn? What makes your project stand out? If your project has a lot of features, consider adding a heading called "Features" and listing them here.
-
-If you're new to Markdown, read the GitHub guide on [Mastering Markdown](https://guides.github.com/features/mastering-markdown/).
-
-If you need an example of a good README, check out [the VSCode repository](https://github.com/microsoft/vscode).
-
-
-## Table of Contents (Optional)
-
-If your README is very long, add a table of contents to make it easy for users to find what they need.
-
-* [Installation](#installation)
-* [Usage](#usage)
-* [Credits](#credits)
-* [License](#license)
-
-
-## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
-
-
-## Usage 
-
-Provide instructions and examples for use. Include screenshots as needed. 
-
-
-## Credits
-
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
 
 
 
@@ -85,9 +94,26 @@ The last section of a good README is a license. This lets other developers know 
 
 🏆 The sections listed above are the minimum for a good README, but your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
 
-## Badges
+## Badges 
 
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+:sweat_drops:
+:light_rail:
+:scroll:
+:boom:
+:books:
+:notebook:
+:rocket:
+:sparkles:
+:curly_loop:
+![](https://raw.githubusercontent.com/acervenky/animated-github-badges/master/assets/pro.gif)
+
+![barbara-api](https://img.shields.io/github/languages/top/dagreatcode/barbara-api)
+
+![Profile views](https://gpvc.arturio.dev/dagreatcode)
+
+https://retroluxe.herokuapp.com/
+
+[![Vincent's github stats](https://github-readme-stats.vercel.app/api?username=dagreatcode&theme=blue-green)](https://github.com/dagreatcode/barbara-api)
 
 Badges aren't _necessary_, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
