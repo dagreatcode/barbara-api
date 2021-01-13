@@ -1,0 +1,33 @@
+<h1>What Would You Like To Do Today?</h1>
+
+<ul>
+    {{#each retroluxe}}
+    <li>
+        <p>
+            {{this.id}}. {{this.name}}. {{this.bin_location}}. {{this.description}}. {{this.img}}
+
+            <button data-retroid="{{this.id}}" action="/api/item" method="DE" class="delRetro">Delete</button>
+        </p>
+    </li>
+    {{/each}}
+</ul>
+
+<h2>Update a Item</h2>
+
+{{!-- <form action="/api/item" method="PUT" id="updateRetro">
+    <div id="dataHelp" class="form-text">Update data to retroluxe.</div>
+    <br>
+    <input placeholder="Item Name" name="name" type="text" class="form-control" id="name">
+    <br>
+    <input placeholder="Bin Location" name="bin_location" type="number" class="form-control" id="bin_location">
+    <br>
+    <textarea type="text" name="description" id="description">Description: </textarea>
+    <br>
+    <input class="form-control form-control-sm" name="img" id="img" type="file">
+    <br>
+    <input type="text" name="id" placeholder="id" id="name">
+    <br>
+    <input type="checkbox" name="important" class="form-check-input" id="important">
+    <br>
+    <button type="submit">Update Retro!</button>
+</form> --}}

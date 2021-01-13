@@ -7,6 +7,20 @@
     font-family: sans-serif;
   }
 </style>
+<h1>I Found All Data </h1>
+{{#each retroluxe}}
+<h1>For the ID of {{this.name}}</h1>
+{{/each}}
+<ul>
+  {{#each retroluxe}}
+  <li>ID: {{this.id}}</li>
+  <li>Name: {{this.name}}</li>
+  <li>Location: {{this.bin_location}}</li>
+  <li>Description: {{this.description}}</li>
+  <li>Image: {{this.img}}</li>
+  <li>Timestamp: {{this.timestamp}}</li>
+  {{/each}}
+</ul>
 
 <h1>Data for {{poohmadeit}}</h1>
 
@@ -21,15 +35,52 @@
   {{/each}}
 </ul>
 
-<h1>Data for {{retroluxe}}</h1>
+<h2>Update a Plan</h2>
+<form action="/api/item/:id" method="PUT" id="updateRetro" class="update-form">
+  
+    {{#each retroluxe}}
+    <textarea type="number" name="id" id="id">{{this.id}} </textarea>
+    <br>
+     <textarea type="text" name="name" id="name">{{this.name}} </textarea>
+    <br>
+    <input placeholder="{{bin_location}}" name="bin_location" type="number" class="form-control" id="bin_location">
+    <br>
+    <textarea type="text" name="description" id="description">{{this.description}} </textarea>
+    <br>
+    <input class="form-control form-control-sm" name="img" id="img" type="file">
+    <br>
+    <button type="submit">Update Plan!</button>
+    {{/each}}
 
-<ul>
-  {{#each retroluxe}}
-  <li>{{this.id}}</li>
-  <li>{{this.name}}</li>
-  <li>{{this.bin_location}}</li>
-  <li>{{this.description}}</li>
-  <li>{{this.img}}</li>
-  <li>{{this.timestamp}}</li>
-  {{/each}}
-</ul>
+</form>
+<script type="text/javascript">
+$(function() {
+    $(".update-form").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var updatedQuote = {
+      id: $("#id").val().trim(),
+      name: $("#name").val().trim(),
+      bin_location: $("#bin_location").val().trim(),
+      description: $("#description").val().trim(),
+      img: $("#img").val().trim()
+    };
+
+    var id = $(this).data("#id");
+
+    // Send the POST request.
+    $.ajax("/api/item/" + id, {
+      type: "PUT",
+      data: updatedQuote
+    }).then(
+      function() {
+        console.log("updated quote");
+        // Reload the page to get the updated list
+        location.assign("/");
+      }
+    );
+  });
+});
+
+</script>
